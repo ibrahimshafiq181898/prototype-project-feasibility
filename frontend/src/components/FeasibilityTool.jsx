@@ -102,11 +102,14 @@ export default function FeasibilityTool() {
           >
             {/* Email field */}
             <Form.Item
-              label="Uw e-mailadres"
+              label="Enter your Email Address"
               name="email"
               rules={[
-                { required: true, message: "Email is verplicht." },
-                { type: "email", message: "Voer een geldig emailadres in." }
+                { required: true, message: "Email is required." },
+                {
+                  type: "email",
+                  message: "Please enter a valid email address."
+                }
               ]}
             >
               <Input placeholder="naam@bedrijf.be" />
@@ -114,12 +117,12 @@ export default function FeasibilityTool() {
 
             {/* Drag & Drop Upload */}
             <Form.Item
-              label="Upload uw projectdocument(en)"
+              label="Upload document"
               name="files"
               rules={[
                 {
                   required: true,
-                  message: "Gelieve minstens één bestand te uploaden."
+                  message: "Please upload at least one file."
                 }
               ]}
             >
@@ -143,7 +146,7 @@ export default function FeasibilityTool() {
               loading={loading}
               style={{ marginTop: 15 }}
             >
-              Analyse uitvoeren
+              Get Analysis
             </Button>
           </Form>
         </Card>
