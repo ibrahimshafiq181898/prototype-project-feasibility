@@ -24,7 +24,7 @@ export default function FeasibilityTool() {
   const draggerProps = {
     name: "file",
     multiple: true,
-    beforeUpload: () => false // stop auto-upload
+    beforeUpload: () => false
   };
 
   const onFinish = (values) => {
@@ -38,113 +38,159 @@ export default function FeasibilityTool() {
   };
 
   return (
-    <Layout>
-      {/* ---- NAVBAR ---- */}
+    <Layout
+      style={{
+        minHeight: "100vh",
+        background: "linear-gradient(to bottom, #ffffff)"
+      }}
+    >
+      {/* -------- FULL-WIDTH NAVBAR -------- */}
       <Header
         style={{
-          background: "#1677ff",
-          padding: "0 40px",
+          width: "100%",
+          position: "fixed",
+          top: 0,
+          left: 0,
+          zIndex: 100,
+          background: "#f1f5ff",
+          height: 80,
+          boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
           display: "flex",
           alignItems: "center",
-          height: 64
+          padding: "0 40px"
         }}
       >
-        <div style={{ color: "#fff", fontSize: 20, fontWeight: 600 }}>
+        {/* Left Logo */}
+        <div
+          style={{
+            color: "#1677ff",
+            fontSize: 24,
+            fontWeight: 700,
+            whiteSpace: "nowrap"
+          }}
+        >
           Feasibility Tool
         </div>
 
+        {/* Menu */}
         <Menu
-          theme="dark"
           mode="horizontal"
           defaultSelectedKeys={["1"]}
           style={{
-            background: "transparent",
             marginLeft: 40,
             flex: 1,
-            minWidth: 0
+            borderBottom: "none",
+            fontSize: 16
           }}
-          //   items={[
-          //     { key: "1", label: "Ondernemingen" },
-          //     { key: "2", label: "Burgers" },
-          //     { key: "3", label: "Verenigingen" },
-          //     { key: "4", label: "Overzicht" },
-          //     { key: "5", label: "Haalbaarheid & Scorecard" }
-          //   ]}
+          // items={[
+          //   { key: "1", label: "Ondernemingen" },
+          //   { key: "2", label: "Burgers" },
+          //   { key: "3", label: "Verenigingen" },
+          //   { key: "4", label: "Overzicht" },
+          //   { key: "5", label: "Haalbaarheid & Scorecard" }
+          // ]}
         />
       </Header>
 
-      {/* ---- MAIN CONTENT ---- */}
+      {/* -------- MAIN CONTENT -------- */}
       <Content
-        style={{ maxWidth: 1100, margin: "0 auto", padding: "40px 20px" }}
+        style={{
+          maxWidth: 1100,
+          margin: "180px auto 0", // extra margin so content is below navbar
+          padding: "20px"
+        }}
       >
         <Card
           style={{
-            borderRadius: 8,
-            padding: 20,
-            border: "1px solid #d9d9d9"
+            borderRadius: 20,
+            textAlign: "left",
+            padding: 40,
+            background: "rgba(255,255,255,0.96)",
+            boxShadow: "0 12px 40px rgba(0,0,0,0.1)",
+            border: "1px solid rgba(0,0,0,0.05)"
           }}
         >
-          <Title level={3}>Haalbaarheidsanalyse Tool</Title>
+          <Title level={3} style={{ marginBottom: 10 }}>
+            Haalbaarheidsanalyse Tool
+          </Title>
 
-          <Paragraph style={{ maxWidth: "80%" }}>
-            Gebruik deze tool om de haalbaarheid van uw vereenvoudigingsproject
-            te analyseren. Beschrijf uw project en ontvang een gedetailleerde
-            analyse met scores op juridische, Europese, technische, uitvoerings-
-            en draagvlakfactoren.
+          <Paragraph style={{ maxWidth: "85%", color: "#555", fontSize: 16 }}>
+            Beschrijf uw project en ontvang een gedetailleerde analyse met
+            scores op juridische, Europese, technische, uitvoerings- en
+            draagvlakfactoren.
           </Paragraph>
 
-          {/* ---- FORM ---- */}
+          {/* -------- FORM -------- */}
           <Form
             form={form}
             layout="vertical"
             onFinish={onFinish}
-            style={{ marginTop: 30 }}
+            style={{ marginTop: 35 }}
           >
-            {/* Email field */}
+            {/* Email */}
             <Form.Item
-              label="Enter your Email Address"
+              label="Enter your Email Adress"
               name="email"
               rules={[
                 { required: true, message: "Email is required." },
-                {
-                  type: "email",
-                  message: "Please enter a valid email address."
-                }
+                { type: "email", message: "Please enter a valid email." }
               ]}
             >
-              <Input placeholder="naam@bedrijf.be" />
+              <Input
+                placeholder="naam@bedrijf.be"
+                style={{
+                  height: 48,
+                  borderRadius: 10,
+                  fontSize: 15
+                }}
+              />
             </Form.Item>
 
-            {/* Drag & Drop Upload */}
+            {/* Upload */}
             <Form.Item
               label="Upload document"
               name="files"
               rules={[
                 {
                   required: true,
-                  message: "Please upload at least one file."
+                  message: "Upload minstens één bestand."
                 }
               ]}
             >
-              <Dragger {...draggerProps} style={{ padding: 20 }}>
+              <Dragger
+                {...draggerProps}
+                style={{
+                  padding: 25,
+                  borderRadius: 14,
+                  border: "2px dashed #91caff",
+                  background: "#f0f7ff"
+                }}
+              >
                 <p className="ant-upload-drag-icon">
                   <InboxOutlined style={{ color: "#1677ff" }} />
                 </p>
                 <p className="ant-upload-text">
                   Klik of sleep bestanden om te uploaden
                 </p>
-                <p className="ant-upload-hint">
-                  Ondersteunt meerdere bestanden. Bestanden worden niet
-                  automatisch geüpload.
+                <p className="ant-upload-hint" style={{ color: "#555" }}>
+                  Ondersteunt meerdere bestanden. Worden niet automatisch
+                  geüpload.
                 </p>
               </Dragger>
             </Form.Item>
 
+            {/* Button */}
             <Button
               type="primary"
               htmlType="submit"
               loading={loading}
-              style={{ marginTop: 15 }}
+              style={{
+                marginTop: 20,
+                height: 50,
+                width: 180,
+                borderRadius: 10,
+                fontSize: 16
+              }}
             >
               Get Analysis
             </Button>
