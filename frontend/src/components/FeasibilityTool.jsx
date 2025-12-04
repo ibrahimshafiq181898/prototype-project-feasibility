@@ -173,8 +173,7 @@ export default function FeasibilityTool() {
                   Klik of sleep bestanden om te uploaden
                 </p>
                 <p className="ant-upload-hint" style={{ color: "#555" }}>
-                  Ondersteunt meerdere bestanden. Worden niet automatisch
-                  geüpload.
+                  Ondersteunt meerdere bestanden.
                 </p>
               </Dragger>
             </Form.Item>
