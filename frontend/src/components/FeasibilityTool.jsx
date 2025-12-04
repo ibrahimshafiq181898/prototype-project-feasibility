@@ -191,7 +191,7 @@ export default function FeasibilityTool() {
                 fontSize: 16
               }}
             >
-              Get Analysis
+              Voer Analyse uit
             </Button>
           </Form>
         </Card>
