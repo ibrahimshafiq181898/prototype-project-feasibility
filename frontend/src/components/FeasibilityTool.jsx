@@ -44,7 +44,7 @@ export default function FeasibilityTool() {
         background: "linear-gradient(to bottom, #ffffff)"
       }}
     >
-      {/* -------- FULL-WIDTH NAVBAR -------- */}
+      {/* -------- NAVBAR -------- */}
       <Header
         style={{
           width: "100%",
@@ -53,18 +53,21 @@ export default function FeasibilityTool() {
           left: 0,
           zIndex: 100,
           background: "#f1f5ff",
-          height: 80,
+          height: 70,
           boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
           display: "flex",
           alignItems: "center",
-          padding: "0 40px"
+          padding: "0 20px",
+          justifyContent: "space-between",
+          gap: 10,
+          flexWrap: "wrap"
         }}
       >
-        {/* Left Logo */}
+        {/* Logo */}
         <div
           style={{
             color: "#1677ff",
-            fontSize: 24,
+            fontSize: 20,
             fontWeight: 700,
             whiteSpace: "nowrap"
           }}
@@ -72,52 +75,59 @@ export default function FeasibilityTool() {
           Feasibility Tool
         </div>
 
-        {/* Menu */}
-        <Menu
-          mode="horizontal"
-          defaultSelectedKeys={["1"]}
-          style={{
-            marginLeft: 40,
-            flex: 1,
-            borderBottom: "none",
-            fontSize: 16
-          }}
-          // items={[
-          //   { key: "1", label: "Ondernemingen" },
-          //   { key: "2", label: "Burgers" },
-          //   { key: "3", label: "Verenigingen" },
-          //   { key: "4", label: "Overzicht" },
-          //   { key: "5", label: "Haalbaarheid & Scorecard" }
-          // ]}
-        />
+        {/* Menu - hidden for small screens */}
+        <div style={{ display: "none" }}>
+          <Menu
+            mode="horizontal"
+            defaultSelectedKeys={["1"]}
+            style={{
+              borderBottom: "none"
+            }}
+          />
+        </div>
       </Header>
 
       {/* -------- MAIN CONTENT -------- */}
       <Content
         style={{
           maxWidth: 1100,
-          margin: "180px auto 0", // extra margin so content is below navbar
-          padding: "20px"
+          margin: "130px auto 0",
+          padding: "15px"
         }}
       >
         <Card
           style={{
             borderRadius: 20,
             textAlign: "left",
-            padding: 40,
+            padding: "25px 25px",
             background: "rgba(255,255,255,0.96)",
             boxShadow: "0 12px 40px rgba(0,0,0,0.1)",
-            border: "1px solid rgba(0,0,0,0.05)"
+            border: "1px solid rgba(0,0,0,0.05)",
+            width: "100%"
           }}
         >
-          <Title level={3} style={{ marginBottom: 10 }}>
+          <Title
+            level={3}
+            style={{
+              marginBottom: 10,
+              fontSize: "1.6rem"
+            }}
+          >
             Haalbaarheidsanalyse Tool
           </Title>
 
-          <Paragraph style={{ maxWidth: "85%", color: "#555", fontSize: 16 }}>
-            Beschrijf uw project en ontvang een gedetailleerde analyse met
-            scores op juridische, Europese, technische, uitvoerings- en
-            draagvlakfactoren.
+          <Paragraph
+            style={{
+              maxWidth: "100%",
+              color: "#555",
+              fontSize: 15,
+              lineHeight: 1.6
+            }}
+          >
+            Beschrijf uw project en ontvang een gedetailleerde analyse van de
+            haalbaarheid van uw project met informatie over mogelijke
+            juridische, EU, technische, implementatie en draagvlak
+            aandachtspunten.
           </Paragraph>
 
           {/* -------- FORM -------- */}
@@ -125,7 +135,7 @@ export default function FeasibilityTool() {
             form={form}
             layout="vertical"
             onFinish={onFinish}
-            style={{ marginTop: 35 }}
+            style={{ marginTop: 30 }}
           >
             {/* Email */}
             <Form.Item
@@ -139,7 +149,7 @@ export default function FeasibilityTool() {
               <Input
                 placeholder="naam@bedrijf.be"
                 style={{
-                  height: 48,
+                  height: 45,
                   borderRadius: 10,
                   fontSize: 15
                 }}
@@ -160,7 +170,7 @@ export default function FeasibilityTool() {
               <Dragger
                 {...draggerProps}
                 style={{
-                  padding: 25,
+                  padding: 20,
                   borderRadius: 14,
                   border: "2px dashed #91caff",
                   background: "#f0f7ff"
@@ -186,7 +196,8 @@ export default function FeasibilityTool() {
               style={{
                 marginTop: 20,
                 height: 50,
-                width: 180,
+                width: "100%", // full width on mobile
+                maxWidth: 220, // but not too large on desktop
                 borderRadius: 10,
                 fontSize: 16
               }}
