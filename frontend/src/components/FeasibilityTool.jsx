@@ -129,7 +129,7 @@ export default function FeasibilityTool() {
           >
             {/* Email */}
             <Form.Item
-              label="Enter your Email Adress"
+              label="Voer uw e-mailadres in"
               name="email"
               rules={[
                 { required: true, message: "Email is required." },
@@ -148,7 +148,7 @@ export default function FeasibilityTool() {
 
             {/* Upload */}
             <Form.Item
-              label="Upload document"
+              label="Document uploaden"
               name="files"
               rules={[
                 {
