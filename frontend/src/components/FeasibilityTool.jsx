@@ -44,7 +44,6 @@ export default function FeasibilityTool() {
         background: "linear-gradient(to bottom, #ffffff)"
       }}
     >
-      {/* -------- NAVBAR -------- */}
       <Header
         style={{
           width: "100%",
@@ -63,7 +62,6 @@ export default function FeasibilityTool() {
           flexWrap: "wrap"
         }}
       >
-        {/* Logo */}
         <div
           style={{
             color: "#1677ff",
@@ -75,7 +73,6 @@ export default function FeasibilityTool() {
           Feasibility Tool
         </div>
 
-        {/* Menu - hidden for small screens */}
         <div style={{ display: "none" }}>
           <Menu
             mode="horizontal"
@@ -87,7 +84,6 @@ export default function FeasibilityTool() {
         </div>
       </Header>
 
-      {/* -------- MAIN CONTENT -------- */}
       <Content
         style={{
           maxWidth: 1100,
@@ -130,14 +126,12 @@ export default function FeasibilityTool() {
             aandachtspunten.
           </Paragraph>
 
-          {/* -------- FORM -------- */}
           <Form
             form={form}
             layout="vertical"
             onFinish={onFinish}
             style={{ marginTop: 30 }}
           >
-            {/* Email */}
             <Form.Item
               label="Voer uw e-mailadres in"
               name="email"
@@ -196,13 +190,13 @@ export default function FeasibilityTool() {
               style={{
                 marginTop: 20,
                 height: 50,
-                width: "100%", // full width on mobile
-                maxWidth: 220, // but not too large on desktop
+                width: "100%", 
+                maxWidth: 220, 
                 borderRadius: 10,
                 fontSize: 16
               }}
             >
-              Voer Analyse uit
+              Voer analyse uit
             </Button>
           </Form>
         </Card>
